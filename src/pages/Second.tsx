@@ -1,23 +1,28 @@
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import ParentChildCheckboxes from "../component/ParentChildCheckboxes"
-import Table from "../component/Table"
+import Table from "../component/Table";
+import { useNavigate } from 'react-router-dom';
+
 const Second = () => {
-      const isUserDataAvailable = () => {
-    const userData = localStorage.getItem('userData');
-    return !!userData;
-  };
+    const navigate = useNavigate();
+
+    const isUserDataAvailable = () => {
+        const userData = localStorage.getItem('userData');
+        return !!userData;
+    };
     useEffect(() => {
         console.log(!isUserDataAvailable())
-        if (!isUserDataAvailable()){
+        if (!isUserDataAvailable()) {
             console.log(localStorage.getItem('userData'))
-            window.location.href = '/'
+            navigate('/');
+
         }
-            
+
     }, [])
     return (
-        <>  
+        <>
             <div style={{ marginTop: "5rem" }}>
-            <Table />
+                <Table />
             </div>
             <div style={{ marginTop: "5rem" }}>
                 <ParentChildCheckboxes />
